@@ -7,7 +7,7 @@ candidate=[0 for _ in range(len(zero))] # 1~9 까지 가능한 후보군 리스�
 def dfs(index):
     if index==len(zero): # 9가 되면 판을 출력 (0~8)
         for i in arr:
-            print(*i)
+            print(*i) # 리스트의 [] 없이 출력하는 방법
         sys.exit(0) # 여러가지 경우이면 하나만 출력
 
     x=zero[index][0] # 스도쿠판의 0인 값의 x좌표

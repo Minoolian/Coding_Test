@@ -1,4 +1,3 @@
-# N과 M문제를 백트래킹을 사용하지 않고 DFS로 완전 탐색하는 방법
 n, m=map(int,input().split())
 check=[False]*(n+1) #유망한 노드인지 확인
 result=[0]*m
@@ -12,14 +11,11 @@ def dfs(index):
         return
 
     for i in range(1,n+1):
-        if check[i]: # 유망한 노드가 아니면 (True가 유망하지 않은 노드)
-            continue
-
+        #if check[i]: # 유망한 노드가 아니면 (True가 유망하지 않은 노드)
+        #    continue
+        #check[i]=True
         result[index]=i # 결과는 DFS가 진행할 때 덮어씌여 지기 때문에 상관 X
         dfs(index+1)
-        check[i]=True # DFS를 실행 후 자신의 노드를 유망하지 않은 노드로 설정
-
-        for j in range(i+1,n+1):# 이전 문제와 달리 상위 노드에서 뒷 부분만을 유망한 노드로 설정 (이전 노드들이 다시 나타나면 중복되기에)
-            check[j]=False
+        #check[i]=False
 
 dfs(0)

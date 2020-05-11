@@ -1,4 +1,3 @@
-arr=[list(map(int,input().split())) for _ in range(9)]
-
-for i in arr:
-    print(i)
+result=[1,2,5]
+vs=list(set([i for i in range(6)])-set(result))
+print(vs)
