@@ -1,4 +1,3 @@
-count_0=[1,0,1]
-count_1=[0,1,1]
+test=[[1,2,3],[4,5,6],[7,8,9]]
 
-print(len(count_0), len(count_1))
+print(test[:3][1])
