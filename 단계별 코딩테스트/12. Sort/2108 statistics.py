@@ -12,7 +12,7 @@ def mid(lis):
 def fre(lis):
     cnt=Counter(lis)
     cnt=sorted(cnt.items(),key=lambda x: x[1],reverse=True)
-    #sorte의 key(정렬기준)를 설정할 때 lambda식 사용이 가능하다
+    #sort의 key(정렬기준)를 설정할 때 lambda식 사용이 가능하다
     if cnt[0][1] == cnt[1][1]:
         return cnt[1][0]
     else:
