@@ -1,3 +1,4 @@
 test=[1,2,3,4]
 
-print(test.pop())
+print(test.pop(0))
+print(test)
