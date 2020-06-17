@@ -1,4 +1,3 @@
-test=[1,2,3,4]
+lis=['1','2','3','4']
 
-print(test.pop(0))
-print(test)
+print(','.join(lis[1::-1]))
