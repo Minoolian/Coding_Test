@@ -1,3 +1,6 @@
-lis=['1','2','3','4']
+import sys
+n=int(input())
+paper=[(sys.stdin.readline().rstrip()) for _ in range(n)]
 
-print(','.join(lis[1::-1]))
+print(paper)
+print(paper[0][1])
