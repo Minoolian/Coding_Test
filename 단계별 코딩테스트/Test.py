@@ -1,6 +1,2 @@
-import sys
-n=int(input())
-paper=[(sys.stdin.readline().rstrip()) for _ in range(n)]
-
-print(paper)
-print(paper[0][1])
+c=[1,2,3]
+print(c%2)
