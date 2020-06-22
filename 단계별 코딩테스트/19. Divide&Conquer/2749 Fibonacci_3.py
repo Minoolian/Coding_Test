@@ -1,12 +1,17 @@
-# 행렬 제곱
+# 피보나치 수 3
 
-# N X N 행렬의 거듭제곱의 결과를 mod 1000 한 결과를 출력.
+# [1 1] = [ F2 F1 ] 라고 생각하고 거듭제곱으로 피보나치 수열 풀이.
+# [1 0]   [ F1 F0 ]
 
-def mul(A,B): # 앞선 O(logN)의 거듭제곱과 행렬곱의 응용이다.
+# [[1,1],[1,0]] 의 거듭제곱 및 행렬곱 이용 (10830과 유사)
+
+n=2
+
+def mul(A,B):
     if B==1:
         for i in range(n):
             for j in range(n):
-                A[i][j]%=1000
+                A[i][j]%=1000000
         return A
 
     elif B%2==0:
@@ -16,7 +21,7 @@ def mul(A,B): # 앞선 O(logN)의 거듭제곱과 행렬곱의 응용이다.
             for K in range(n):
                 for M in range(n):
                     result[N][K] += C[N][M] * C[M][K]
-                result[N][K]%=1000
+                result[N][K]%=1000000
         return result
 
     else:
@@ -26,12 +31,15 @@ def mul(A,B): # 앞선 O(logN)의 거듭제곱과 행렬곱의 응용이다.
             for K in range(n):
                 for M in range(n):
                     result[N][K] += A[N][M] * C[M][K]
-                result[N][K]%=1000
+                result[N][K]%=1000000
         return result
 
-n,B=map(int,input().split())
-A=[list(map(int,input().split())) for _ in range(n)]
+a=int(input())
+A=[[1,1],[1,0]]
 
-
-for i in mul(A,B):
-    print(" ".join(map(str,i))) # 2차원 리스트 출력
+if a==0:
+    print(0)
+elif a==1 or a==2:
+    print(1)
+else:
+    print(sum(mul(A,a-2)[0])%1000000)
