@@ -4,7 +4,7 @@
 # 배열에서 가장 큰 값을 출력하고, 그 값을 배열에서 제거한다.
 
 import heapq
-# 파이썬 모듈은 최소힙 heapq 를 지원한다. 최대 힙으로 변경해서 사용한다.
+# 파이썬 모듈은 minHeap인 heapq 를 지원한다. maxHeap으로 변경해서 사용한다.
 import sys
 heap = []
 for _ in range(int(input())):
