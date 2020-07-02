@@ -9,3 +9,4 @@ for _ in range(4):
             lis.append(a)
 
     print(*lis)
+
