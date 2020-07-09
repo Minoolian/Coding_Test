@@ -1,5 +1,6 @@
 from collections import deque
 
-a=deque
+a=deque([[1,2]])
 
-print(a)
+
+print(a.popleft())
