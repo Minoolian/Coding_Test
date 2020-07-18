@@ -1,7 +1,4 @@
-lis=[[list(map(int,input().split())) for _ in range(3)]]*2
+k=2
 
-for a in lis:
-    for b in a:
-        if 0 in b:
-            print(0)
-            exit(0)
+print([k,'poor KCM'][k==2])
+print(1 if k==2 else: )
