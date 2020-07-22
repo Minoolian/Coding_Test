@@ -12,18 +12,19 @@ w=[list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 
 dp=[[None]*(1<<n) for _ in range(n)]
 
-def tsp(last,visited):
-    if visited==(1<<n)-1:
-        return w[last][0] or inf
+def tsp(cur,visited):
+    if visited==(1<<n)-1: # 모든 도시를 방문했다면
+        return w[cur][0] or inf # 현재 자리에서 0으로 가는 방법이 없으면 inf 반환
 
-    if dp[last][visited] != None:
-        return dp[last][visited]
+    if dp[cur][visited] != None: # 이미 현재까지의 비용이 계산되어있다면
+        return dp[cur][visited] # 그 값을 반환
 
     tmp=inf
-    for city in range(n):
-        if visited & (1<<city) ==0 and w[last][city] !=0:
-            tmp=min(tmp, tsp(city,visited | (1<<city)) + w[last][city])
-    dp[last][visited]=tmp
+    for city in range(n): # 모든 도시에 대해서
+        if visited & (1<<city) ==0 and w[cur][city] !=0: # 그 도시를 방문하지 않았고, 가는 방법도 있다면
+            tmp=min(tmp, tsp(city,visited | (1<<city)) + w[cur][city])
+            # 그 도시까지의 비용 + 그 도시에서 현재까지의 비용
+    dp[cur][visited]=tmp
     return tmp
 
 print(tsp(0,1<<0))
