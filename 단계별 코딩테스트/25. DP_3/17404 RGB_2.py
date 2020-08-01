@@ -13,7 +13,7 @@ lis=[list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 result=sys.maxsize
 
 for color in range(3):
-    dp=[[0 for _ in range(n)] for _ in range(3)]
+    dp=[[0 for _ in range(n)] for _ in range(3)] # dp[color][집]
 
     for i in range(3):
         if i==color:
