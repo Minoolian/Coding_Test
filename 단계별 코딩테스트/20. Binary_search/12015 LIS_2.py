@@ -35,7 +35,7 @@ print(len(DP) - 1)
 
 
 # 모듈 사용
-from bisect import bisect_left #이진탐색 코드, 같은 수일 경우 왼쪽 index를 돌려준다
+from bisect import bisect_left # 이진탐색 코드, 같은 수일 경우 왼쪽 index를 돌려준다
 
 input()
 A = list(map(int, input().split()))
