@@ -5,8 +5,28 @@
 
 import sys
 
-def dist(a,b):
+def dist(a,b): # 거리를 구하는 함수
     return abs(a[0]-b[0])+abs(a[1]-b[1])
+
+def solve(x,y):
+
+    if x==w or y==w:
+        return 0
+
+    next=max(x,y)+1 # 다음사건의 번호
+
+    if x==0: d1=dist(lis[next],[1,1]) # 1번차가 한번도 출동하지 않았다면.
+    else: d1=dist(lis[next],lis[x])
+
+    if y==0: d2=dist(lis[next],[n,n]) # 2번차가 한번도 출동하지 않았다면
+    else: d2=dist(lis[next],lis[y])
+
+    p1=solve(next,y)+d1
+    p2=solve(x,next)+d2
+
+    res=min(p1,p2) # 재귀호출하며 최소값을 반환
+    return res
+
 
 n=int(sys.stdin.readline())
 w=int(sys.stdin.readline())
@@ -15,28 +35,4 @@ lis=[[0]]+[list(map(int,sys.stdin.readline().split())) for _ in range(w)]
 inf=sys.maxsize
 dp=[[inf for _ in range(w+1)] for _ in range(w+1)]
 
-dp[1][0]=dist([1,1],lis[1])
-dp[0][1]=dist([n,n],lis[1])
-
-for i in range(1,w+1):
-    for j in range(i,w+1):
-        k=j
-        if i==1 and j==1:
-            continue
-        if k-1==i-1:
-            if k-2==0:
-                dp[k][i-1]=dp[k-2][i-1]+dist(lis[k],[1,1])
-                dp[i-1][k]=dp[i-1][k-2]+dist(lis[k],[n,n])
-            else:
-                dp[k][i-1]=dp[k-2][i-1]+dist(lis[k],lis[k-2])
-                dp[i-1][k]=dp[i-1][k-2]+dist(lis[k],lis[k-2])
-        else:
-            if k-1==0:
-                dp[k][i-1]=dp[k-1][i-1]+dist(lis[k],[1,1])
-                dp[i-1][k]=dp[i-1][k-1]+dist(lis[k],[n,n])
-            else:
-                dp[k][i-1]=dp[k-1][i-1]+dist(lis[k],lis[k-1])
-                dp[i-1][k]=dp[i-1][k-1]+dist(lis[k],lis[k-1])
-
-
-print(dp)
+print(solve(0,0))
