@@ -6,16 +6,37 @@
 import sys
 
 def dist(a,b):
-    return (abs(a[0]-b[0])**2+abs(a[1]-b[1])**2)**0.5
+    return abs(a[0]-b[0])+abs(a[1]-b[1])
 
 n=int(sys.stdin.readline())
 w=int(sys.stdin.readline())
-lis=[list(map(int,sys.stdin.readline().split())) for _ in range(w)]
+lis=[[0]]+[list(map(int,sys.stdin.readline().split())) for _ in range(w)]
 
 inf=sys.maxsize
-dp=[[inf for _ in range(n+1)] for _ in range(n+1)]
+dp=[[inf for _ in range(w+1)] for _ in range(w+1)]
 
-dp[1][0]=dist([1,1],lis[0])
-dp[0][1]=dist([n,n],lis[0])
+dp[1][0]=dist([1,1],lis[1])
+dp[0][1]=dist([n,n],lis[1])
 
-for i in range(2,)
+for i in range(1,w+1):
+    for j in range(i,w+1):
+        k=j
+        if i==1 and j==1:
+            continue
+        if k-1==i-1:
+            if k-2==0:
+                dp[k][i-1]=dp[k-2][i-1]+dist(lis[k],[1,1])
+                dp[i-1][k]=dp[i-1][k-2]+dist(lis[k],[n,n])
+            else:
+                dp[k][i-1]=dp[k-2][i-1]+dist(lis[k],lis[k-2])
+                dp[i-1][k]=dp[i-1][k-2]+dist(lis[k],lis[k-2])
+        else:
+            if k-1==0:
+                dp[k][i-1]=dp[k-1][i-1]+dist(lis[k],[1,1])
+                dp[i-1][k]=dp[i-1][k-1]+dist(lis[k],[n,n])
+            else:
+                dp[k][i-1]=dp[k-1][i-1]+dist(lis[k],lis[k-1])
+                dp[i-1][k]=dp[i-1][k-1]+dist(lis[k],lis[k-1])
+
+
+print(dp)
