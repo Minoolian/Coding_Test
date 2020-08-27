@@ -3,9 +3,44 @@
 # 도로의 개수를 나타내는 정수 N, 처리해야 하는 사건의 개수를 나타내는 정수 W, 사건이 발생된 위치가 한 줄에 하나씩 주어진다.
 # 두 경찰차가 이동한 총 거리, 사건이 맡겨진 경찰차 번호 1 또는 2를 출력
 
+# 전형적인 DP로 구현
 import sys
 
+def dist(a,b):
+    if a==[0,0]:
+        return abs(1-b[0])+abs(1-b[1])
+    elif b==[0,0]:
+        return abs(a[0]-n)+abs(a[1]-n)
 
+    return abs(a[0]-b[0])+abs(a[1]-b[1])
+
+n=int(sys.stdin.readline())
+w=int(sys.stdin.readline())
+lis=[[0,0]]+[list(map(int,sys.stdin.readline().split())) for _ in range(w)]
+
+inf=sys.maxsize
+dp=[[inf]*(w+1) for _ in range(w+1)]
+
+for i in range(1,w+1): # 1. 한 경찰차만 모든 사건에 출동할 경우
+    if i==1:
+        dp[i][0]=dist(lis[i-1],lis[i])
+        dp[0][i]=dist(lis[i],lis[i-1])
+    else:
+        dp[i][0]=dp[i-1][0]+dist(lis[i-1],lis[i])
+        dp[0][i]=dp[0][i-1]+dist(lis[i],lis[i-1])
+
+
+for i in range(1,w):
+    for j in range(i+1,w+1):
+        if abs(i-j)!=1:
+            dp[j][i] = dp[j-1][i]+dist(lis[j],lis[j-1]) # x이동
+            dp[i][j] = dp[i][j-1]+dist(lis[i],lis[i-1]) # y이동
+        else:
+            for k in range(0,j-1):
+                dp[j][i] = min(dp[j][i], dp[k][i]+dist(lis[k],lis[j])) # x이동
+                dp[i][j] = min(dp[i][j], dp[i][k]+dist(lis[j],lis[k]))# y이동
+
+print(dp)
 
 
 # 재귀 함수로 구현: 시간 초과
