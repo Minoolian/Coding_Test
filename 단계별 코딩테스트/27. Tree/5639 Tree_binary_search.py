@@ -1,3 +1,11 @@
+# 이진 검색 트리
+
+# 트리를 전위 순회한 결과가 주어진다.
+# 입력으로 주어진 이진 검색 트리를 후위 순회한 결과를 한 줄에 하나씩 출력
+
+import sys
+sys.setrecursionlimit(10**9)
+
 def postorder(start,end):
     if start>end:
         return
@@ -11,13 +19,7 @@ def postorder(start,end):
     postorder(start+1,division-1)#분할 왼쪽
     postorder(division,end)#분할 오른쪽
     print(post[start])
- 
- 
- 
-import sys
-sys.setrecursionlimit(10**9)
- 
- 
+
 post=[]
 count = 0
 while count <= 10000:

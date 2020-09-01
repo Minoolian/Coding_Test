@@ -31,13 +31,9 @@ lis=[[] for _ in range(n)]
 
 for i in range(n):
     check=list(map(int, sys.stdin.readline().split()))
-    if check[3]==-1:
-        lis[check[0]-1].append([check[2],check[1]-1])
-        lis[check[1]-1].append([check[2],check[0]-1])
-    else:
-        lis[check[0]-1].append([check[2],check[1]-1])
-        lis[check[1]-1].append([check[2],check[0]-1])
-        lis[check[0]-1].append([check[4],check[3]-1])
-        lis[check[3]-1].append([check[4],check[0]-1])
+    leng=(len(check)-2)//2 # 받은 입력값을 쪼개기 위한 길이 계산
+    for j in range(leng): # 입력 값 쪼개기
+        lis[check[0]-1].append([check[2*j+2],check[2*j+1]-1])
+        lis[check[2*j+1]-1].append([check[2*j+2],check[0]-1])
 
 print(bfs(bfs(0,1), 2))

@@ -15,8 +15,7 @@ for _ in range(N-1):
  
 #부모저장
 parents=[0 for _ in range(N+1)]
- 
- 
+
 def DFS(start,tree,parents):
     for i in tree[start]:#연결된 노드 모두탐색
         if parents[i]==0:#한번도 방문한적이 없다면
