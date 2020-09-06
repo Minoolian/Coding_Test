@@ -45,6 +45,8 @@ for _ in range(m):
             print('YES')
         else:
             print('NO')
+
+
 # 메모리 초과
 # import sys
 #
