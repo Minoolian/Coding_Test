@@ -1,4 +1,3 @@
-
 from copy import deepcopy # 다차원 리스트의 복사는 깊은 복사로 해야한다.
 
 def rotate(lis):
@@ -27,7 +26,7 @@ def solution(key, lock):
 
     for i in range(m,m+n):
         for j in range(m,m+n):
-            new_lock[i][j]=lock[i-n][j-n]
+            new_lock[i][j]=lock[i-m][j-m]
 
     for _ in range(4):
         for i in range(m+n+1):
