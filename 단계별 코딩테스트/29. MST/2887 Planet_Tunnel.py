@@ -6,49 +6,55 @@
 # 다음 N개 줄에는 각 행성의 x, y, z좌표가 주어진다.
 
 import sys
-#크루스칼에 필요한 유니온 파인드
-def Find(x):
-    if p[x]==x:
+input=sys.stdin.readline
+
+# Union-Find를 이용하여 정점이 한 집합에 있는 지 확인
+def find(x):
+    if parent[x]==x:
         return x
-    else:
-        y=Find(p[x])
-        p[x]=y
-        return y
+    parent[x]=find(parent[x])
+    return parent[x]
 
-def Union(x,y):
-    x=Find(x)
-    y=Find(y)
+def union(x,y):
+    x=find(x)
+    y=find(y)
+
     if x!=y:
-        p[y]=x
+        parent[y]=x
 
-N=int(sys.stdin.readline())
-s_location=[]
-p=[i for i in range(N)]
-e=[]
-for i in range(N):
-    x,y,z=map(int,sys.stdin.readline().split())
-    s_location.append([x,y,z,i])#x,y,z좌표 i번째노드
+def kruskal(g,v):
 
-for j in range(3):
-    s_location.sort(key=lambda x:x[j])#각 좌표별로 정렬
-    before_location=s_location[0][3]
-    for i in range(1,N):#각 좌표별로 간선추가
-        cur_location=s_location[i][3]
-        e.append([abs(s_location[i][j]-s_location[i-1][j]),before_location,cur_location])
-        before_location=cur_location
+    g.sort(key=lambda x:x[0])# 간선을 가중치를 기준으로 정렬
+    mst=0
+    count=0
 
+    for w,a,b in g:# 가중치가 작은 간선부터.
+        if find(a) != find(b):
+            union(a,b)
+            mst+=w
+            count+=1
 
-e.sort(key=lambda x:x[0])
+        if count==v-1:# 트리를 이루면 종료.
+            break
 
-#크루스칼 알고리즘
-count=0
-result=0
-for dis,start,end in e:
-    if Find(start)!=Find(end):
-        result+=dis
+    return mst
 
-        Union(start,end)
-    if count==N-1:
-        break
+if __name__=="__main__":
+    n=int(input())
+    edge=[]
+    parent=[i for i in range(n+1)]
+    e=[]
 
-print(result)
+    for i in range(n):
+        x,y,z=map(int,input().split())
+        edge.append([x,y,z,i])
+
+    for i in range(3): # 모든 간선 쌍을 확인하면 메모리 초과 / 일차원 거리중 최솟값을 찾기 위해서는 정렬한 후 인접한 값을 계산하는 것이 효율적.
+        edge.sort(key=lambda x:x[i])
+        cur=edge[0][3]
+        for j in range(1,n):
+            next=edge[j][3]
+            e.append([abs(edge[j][i]-edge[j-1][i]),cur,next])
+            cur=edge[j][3]
+
+    print(kruskal(e,n))
