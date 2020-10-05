@@ -6,25 +6,66 @@
 #
 # 개미굴의 시각화된 구조를 출력하여라.
 
-# 트라이 알고리즘을 이용하지 않은 풀이
-N=int(input())
-ant=[]
- 
-for i in range(N):
-    arr=list(input().split())
-    ant.append(arr[1:])
- 
-ant.sort()
-for i in range(N):
-    if i==0:#첫배열
-        for j in range(len(ant[i])):
-            print("--"*j+ant[i][j])
-    else:
-        count=-1
-        for j in range(len(ant[i])):#dfs
-            if len(ant[i-1])<=j or ant[i-1][j]!=ant[i][j]: #이전배열과 같은지 비교
-                break
-            else:#같다면 출력하지 않고 넘어간다.
-                count=j#어디까지 같은지 저장
-        for j in range(count+1,len(ant[i])):#같은것을 제외한 나머지 인자 출력
-            print("--" * j + ant[i][j])
+# * 트라이 알고리즘을 이용한 풀이
+import sys
+input=sys.stdin.readline
+
+class Node:
+    def __init__(self, key):
+        self.key=key
+        self.child={}
+
+class Trie:
+    def __init__(self):
+        self.root=Node(None)
+
+    def insert(self, string_arr):
+        cur_node=self.root
+
+        for string in string_arr:
+            if string not in cur_node.child:
+                cur_node.child[string]=Node(string)
+            cur_node=cur_node.child[string]
+
+
+    def print_ant(self, rank, cur_node):
+        if rank==0:
+            cur_node=self.root
+
+        for c in sorted(cur_node.child.keys()):
+            print("--"*rank,c,sep="")
+            self.print_ant(rank+1,cur_node.child[c])
+
+
+if __name__ =="__main__":
+    n=int(input())
+    trie=Trie()
+
+    for _ in range(n):
+        temp=list(input().split())
+        trie.insert(temp[1:])
+
+    trie.print_ant(0, None)
+
+# * 트라이 알고리즘을 이용하지 않은 풀이
+# N=int(input())
+# ant=[]
+#
+# for i in range(N):
+#     arr=list(input().split())
+#     ant.append(arr[1:])
+#
+# ant.sort()
+# for i in range(N):
+#     if i==0:#첫배열
+#         for j in range(len(ant[i])):
+#             print("--"*j+ant[i][j])
+#     else:
+#         count=-1
+#         for j in range(len(ant[i])):#dfs
+#             if len(ant[i-1])<=j or ant[i-1][j]!=ant[i][j]: #이전배열과 같은지 비교
+#                 break
+#             else:#같다면 출력하지 않고 넘어간다.
+#                 count=j#어디까지 같은지 저장
+#         for j in range(count+1,len(ant[i])):#같은것을 제외한 나머지 인자 출력
+#             print("--" * j + ant[i][j])

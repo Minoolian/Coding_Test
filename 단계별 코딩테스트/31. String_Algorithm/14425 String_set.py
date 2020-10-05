@@ -10,9 +10,9 @@ import sys
 input=sys.stdin.readline
 
 class Node:
-    def __init__(self, key, data):
+    def __init__(self, key):
         self.key=key
-        self.data=data
+        self.data=None
         self.child={}
 
 class Trie:
@@ -35,7 +35,7 @@ class Trie:
         for s in string:
             if s in cur_node.child:
                 cur_node=cur_node.child[s]
-            else
+            else:
                 return False
 
         if cur_node.data:
