@@ -27,6 +27,51 @@ for _ in range(t):
     m=int(input())
     for _ in range(m):
         a,b=map(int,input().split())
+        chk=True
 
         for i in g[a]:
-            if i==b:
+            if i==b: # a가 높은 순위
+                g[a].remove(b)
+                g[b].append(a)
+                indegree[a]+=1
+                indegree[b]-=1
+                chk=False
+        if chk:
+            g[b].remove(a)
+            g[a].append(b)
+            indegree[a]-=1
+            indegree[b]+=1
+
+    for i in range(1, n+1):
+        if indegree[i]==0:
+            q.append(i)
+
+    result=[]
+    flag=0
+    if not q:
+        flag=1
+    while q:
+        if len(q)>1: # q에 두개이상 들어오면 순위를 확정할 수 없다.
+          flag=1
+          break
+
+        h=q.popleft()
+        result.append(h)
+        for i in g[h]:
+            indegree[i]-=1
+            # 간선 삭제
+            if indegree[i]==0:
+            # 추가로 발견되는 들어오는 간선이 없는 정점을 q에 삽입
+                q.append(i)
+            elif indegree[i]<0: # 사이클 탐지
+                flag=1
+                break
+
+
+    if flag>0 or len(result)<n:
+        print("IMPOSSIBLE")
+    else:
+        print(*result)
+
+
+
