@@ -9,3 +9,28 @@
 #
 # 주어지는 n, x마다 fn(x)를 출력한다.
 
+import sys
+input=sys.stdin.readline
+
+m=int(input())
+f=[0]+list(map(int,input().split()))
+dp=[[f[i]] for i in range(m+1)]
+# dp[i][j]: 정점 i에서 2^j 만큼 이동했을 때의 정점
+# 마치 분할정복의 A^B 연산할 때 연산횟수를 줄이는 것과 유사
+
+for j in range(1,19):
+    for i in range(1,m+1):
+        dp[i].append(dp[dp[i][j-1]][j-1])
+        # i에서 2^j번 이동 후 정점은 i에서 2^(j-1)*2번 이동하는 것과 같다.
+        # Sparse(희소) table 구성
+        # 모든 값을 구성하는 것이 아닌 일부로 구성
+
+q=int(input())
+for _ in range(q):
+    n,x=map(input().split())
+    for j in range(18, -1, -1):
+        if n>= 1<<j:
+            n-= 1<<j
+            x=dp[x][j]
+
+    print(x)
