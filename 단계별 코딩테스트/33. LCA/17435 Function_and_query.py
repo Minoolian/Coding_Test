@@ -27,10 +27,10 @@ for j in range(1,19):
 
 q=int(input())
 for _ in range(q):
-    n,x=map(input().split())
+    n,x=map(int,input().split())
     for j in range(18, -1, -1):
-        if n>= 1<<j:
-            n-= 1<<j
-            x=dp[x][j]
+        if n>= 1<<j: # 2^j 보다 입력받은 fn(x)의 n이 더 크다면
+            n-= 1<<j # 2^j를 빼고 나머지를 계산
+            x=dp[x][j] # 끝까지 탐색하는 양상
 
     print(x)
