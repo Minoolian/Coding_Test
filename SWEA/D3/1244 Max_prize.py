@@ -1,40 +1,45 @@
 # 최대 상금
 
-#
+# DFS를 이용하여 가능한 경우의 수를 찾는 문제 (백트래킹)
+# https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15Khn6AN0CFAYD
 
 def dfs(pos, num, swap):
+    global result
     if swap==0:
-        return num
+        result=max(result,int(''.join(map(str,num))))
+        return
 
-    if pos==len(num)-2 and swap//2==0:
-        return num
-    elif pos==len(num)-2 and swap//2==1:
+    if pos==len(num)-2 and swap%2==0:
+        swap=0
+        dfs(pos,num,swap)
+
+    elif pos==len(num)-2 and swap%2==1:
         num[pos], num[pos+1]=num[pos+1], num[pos]
-        return num
+        swap=0
+        dfs(pos,num,swap)
 
-    m=0
-    result=0
-
-    for i in range(pos+1, len(num)):
-        if num[i]>num[pos] and num[i]>=m:
-            m=num[i]
-            clone_num=num[:]
-            clone_num[pos], clone_num[i]=clone_num[i], clone_num[pos]
-            new_num=dfs(pos+1,clone_num,swap-1)
-            if pos==len(num)-3:
-                result=int(''.join(map(str,new_num)))
-            elif int(''.join(map(str,new_num)))>result:
-                result=int(''.join(map(str,new_num)))
-    if result!=0:
-        return list(map(int,str(result)))
     else:
-        return num
+        m=0
+        flag=1
+        for i in range(pos, len(num)):
+            for j in range(i+1,len(num)):
+                if num[j]>=num[i]:
+                    m=num[i]
+                    clone_num=num[:]
+                    clone_num[j], clone_num[i]=clone_num[i], clone_num[j]
+                    dfs(i,clone_num,swap-1)
+                    flag=0
+        if flag:
+            dfs(pos+1, num, swap)
+
 
 t=int(input())
 
 for tc in range(1,t+1):
     temp, swap=map(int,input().split())
     num=list(map(int,str(temp)))
+    result=0
 
-    print("#%d"%tc,''.join(map(str,dfs(0, num, swap))))
+    dfs(0, num, swap)
+    print("#{} {}".format(tc, result))
 
