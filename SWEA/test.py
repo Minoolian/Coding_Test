@@ -1,4 +1,7 @@
-n=4
-lis=[list(map(int,input())) for _ in range(n)]
+temp=[[[[0]*16 for _ in range(4)] for _ in range(4)] for _ in range(4)] # 사이클 확인
 
-print(lis)
+
+temp[0][0][0][1]=1
+
+stat=False
+print(max(stat,True))
