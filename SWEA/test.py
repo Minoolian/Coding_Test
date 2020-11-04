@@ -1,7 +1,3 @@
-temp=[[[[0]*16 for _ in range(4)] for _ in range(4)] for _ in range(4)] # 사이클 확인
+lis=[['A','B','C','D'],['E','F','G','H'],['I','J','K','L']]
 
-
-temp[0][0][0][1]=1
-
-stat=False
-print(max(stat,True))
+lis[][]
