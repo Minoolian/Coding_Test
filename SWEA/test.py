@@ -1,3 +1,3 @@
-lis=[['A','B','C','D'],['E','F','G','H'],['I','J','K','L']]
+lis=list(map(int,input()))
 
-lis[][]
+print(lis)

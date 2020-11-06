@@ -1,6 +1,6 @@
 # 회문
 
-#
+# DP와 반복문을 이용한 풀이.
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14QpAaAAwCFAYi&categoryId=AV14QpAaAAwCFAYi&categoryType=CODE&&&
 
 # 반복문을 이용한 풀이
