@@ -24,23 +24,29 @@ import math
 t=int(input())
 for tc in range(1, t+1):
     m=int(input())
-    p=["Bob","Alice"]
     loser=0
 
     # dfs(1, 1)
-    depth=math.ceil(math.log(m,2))
+    depth=int(math.log(m,2))+1
     result=1
-    for i in range(1, depth):
-        if i%2:
-            result=result*2+1
-        else:
-            result=result*2
-
-    if result>m:
-        if depth%2: idx=1
-        else: idx=0
+    if depth%2:
+        for i in range(1, depth):
+            if i%2:
+                result=result*2+1
+            else:
+                result=result*2
     else:
-        if depth%2: idx=1
-        else: idx=0
+        for i in range(1, depth):
+            if i%2:
+                result=result*2
+            else:
+                result=result*2+1
 
-    print("#{} {}".format(tc,p[idx]))
+    if depth%2:
+        if result>m: winner="Alice"
+        else: winner="Bob"
+    else:
+        if result>m: winner="Bob"
+        else: winner="Alice"
+
+    print("#{} {}".format(tc,winner))
