@@ -1,8 +1,7 @@
 # 최적경로
 
-#
+# 비트마스크를 이용한 TSP 응용문제
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD&categoryId=AV15OZ4qAPICFAYD&categoryType=CODE&&&
-
 
 def dist(a,b):
     return abs(a[0]-b[0]) + abs(a[1]-b[1])
