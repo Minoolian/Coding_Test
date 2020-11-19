@@ -22,9 +22,6 @@ for tc in range(1, 11):
 
     print("#{} {}".format(tc, result))
 
-    
-
-
 
 # DP를 이용한 풀이
 # def reverse(temp):
