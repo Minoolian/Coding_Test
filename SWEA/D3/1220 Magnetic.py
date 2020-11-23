@@ -1,6 +1,6 @@
 # Magnetic
 
-#
+# 리스트와 반복문을 이용한 풀이
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14hwZqABsCFAYD&categoryId=AV14hwZqABsCFAYD&categoryType=CODE
 
 for tc in range(1, 11):
