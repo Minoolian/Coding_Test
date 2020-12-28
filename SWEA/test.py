@@ -1,4 +1,3 @@
-a=input()
+check=[True for _ in range(3)]
 
-if 'a'in a:
-    print(a)
+print(check.count(True))
