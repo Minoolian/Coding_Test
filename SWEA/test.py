@@ -1,3 +1,6 @@
-check=[True for _ in range(3)]
+fin="1234"
+re=[5,1,3,4]
 
-print(check.count(True))
+for i in str(fin):
+    if int(i) in re:
+        print(1)
