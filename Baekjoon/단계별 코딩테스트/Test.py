@@ -1,11 +1,7 @@
-from itertools import permutations
+n=123
 
-a=[1,2,3]
+result=0
+for i in str(n):
+    result+=int(i)
 
-num=0
-for i in permutations(a,3):
-    for j in i:
-        num=num*10+j
-
-    print(num)
-    num=0
+print(len(n))
