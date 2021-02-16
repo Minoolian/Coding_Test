@@ -29,13 +29,15 @@ def dfs(idx, cnt):
         dfs(i+1, cnt+1)
         visit[i]=False
 
-n=int(input())
-worm=[list(map(int,input().split())) for _ in range(n)]
-visit=[False]*n
-result=float('inf')
+t=int(input())
+for tc in range(1, t+1):
+    n=int(input())
+    worm=[list(map(int,input().split())) for _ in range(n)]
+    visit=[False]*n
+    result=float('inf')
 
-dfs(0,0)
-print(result)
+    dfs(0,0)
+    print(f"#{tc} {result}")
 
 
 
