@@ -1,1 +1,4 @@
-print(range(4))
+pair={'}':'{', ']':'[', '>':'<', ')':'('}
+
+if '{' in pair.values():
+    print(1)
