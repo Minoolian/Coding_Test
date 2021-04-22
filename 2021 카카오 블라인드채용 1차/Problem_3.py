@@ -1,3 +1,5 @@
+from bisect import bisect_left
+
 def idx(info_sep):
     ind=[]
     for p in info_sep:
@@ -14,37 +16,39 @@ def idx(info_sep):
     return ind
 
 def groupfy(info):
-    group=[[[[[]]*2 for _ in range(2)] for _ in range(2)] for _ in range(3)]
+    group=[[[[[] for _ in range(2)] for _ in range(2)] for _ in range(2)] for _ in range(3)]
     for info_sep in info:
+        info_sep=info_sep.split()
         i,j,k,l=idx(info_sep)
-        group[i][j][k][l].append(info_sep.pop())
+        group[i][j][k][l].append(int(info_sep.pop()))
+        group[i][j][k][l].sort()
     return group
 
 def solution(info, query):
     answer = []
+
+    group=groupfy(info)
 
     for q in query:
         q=q.split(" and ")
         for sep in q.pop().split():
             q.append(sep)
 
-        =idx(sep)
-        score=sep.pop()
+        index=idx(q)
+        score=int(q.pop())
 
         suit=0
+        for i in range(3):
+            if index[0]!=-1 and i!=index[0]: continue
+            for j in range(2):
+                if index[1]!=-1 and j!=index[1]: continue
+                for k in range(2):
+                    if index[2]!=-1 and k!=index[2]: continue
+                    for l in range(2):
+                        if index[3]!=-1 and l!=index[3]: continue
+                        suit+=len(group[i][j][k][l])-bisect_left(group[i][j][k][l],score)
 
-        flag=False
-            if i==4:
-                if int(q[i])<=int(info_sep[i]): flag=True
-                else: break
-
-            if q[i]==info_sep[i] or q[i]=='-': continue
-            else: break
-
-        if flag: suit+=1
-        else: continue
-
-    answer.append(suit)
+        answer.append(suit)
 
     return answer
 

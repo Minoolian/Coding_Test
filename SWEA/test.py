@@ -1,5 +1,10 @@
-from bisect import bisect_left
+import bisect
 
-a=[1,2,4,5]
+group=[[[[[1,2,3] for _ in range(2)] for _ in range(2)] for _ in range(2)] for _ in range(3)]
 
-print(bisect_left(a,4))
+a=[50]
+
+print(bisect.bisect_left(a,150))
+print(len(a)-bisect.bisect_left(a,150))
+
+print(group[0][0][0][0])
