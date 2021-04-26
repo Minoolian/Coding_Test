@@ -7,6 +7,8 @@ Python 언어에 대한 이해도를 높이기 위해 각종 알고리즘 문제
 
 ## Contents
 - 백준 단계별 코딩
+- SWEA 3~5 난이도 코딩
 
 ## 참고
 - Baekjoon Online Judge (https://www.acmicpc.net/) 
+- SW Expert Academy (https://swexpertacademy.com/)
