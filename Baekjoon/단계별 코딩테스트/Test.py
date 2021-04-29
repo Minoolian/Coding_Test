@@ -1,7 +1,5 @@
-n=123
+n=3
 
-result=0
-for i in str(n):
-    result+=int(i)
+dp=[[float('inf') if i!=j else 0 for i in range(n)] for j in range(n)]
 
-print(len(n))
+print(dp)
