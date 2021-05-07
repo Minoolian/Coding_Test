@@ -46,3 +46,26 @@ def solution(new_id):
 while True:
     a=input()
     print(solution(a))
+
+
+# 다른 사람 풀이
+# import re
+#
+# def solution(new_id):
+#     st = new_id
+#       ...!@BaT#*..y.abcdefghijklm
+#     st = st.lower()
+#       ...!@bat#*..y.abcdefghijklm
+#     st = re.sub('[^a-z0-9\-_.]', '', st)
+#       ...bat..y.abcdefghijklm
+#     st = re.sub('\.+', '.', st)
+#       .bat.y.abcdefghijklm
+#     st = re.sub('^[.]|[.]$', '', st)
+#       bat.y.abcdefghijklm
+#     st = 'a' if len(st) == 0 else st[:15]
+#       bat.y.abcdefghi
+#     st = re.sub('^[.]|[.]$', '', st)
+#       bat.y.abcdefghi
+#     st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
+#       bat.y.abcdefghi
+#     return st
