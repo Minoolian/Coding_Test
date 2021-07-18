@@ -237,3 +237,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,python,pycharm,windows
+Coding_Test_Mida.py
+*.java
+05. Island.py
+04. Boat.py
