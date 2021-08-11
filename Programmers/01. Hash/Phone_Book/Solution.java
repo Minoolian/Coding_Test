@@ -1,6 +1,7 @@
+package Phone_Book;
 import java.util.*;
 
-public class Solution {
+class Solution {
     public boolean solution(String[] phoneBook){
         HashSet<String> set=new HashSet<>();
         Arrays.stream(phoneBook).forEach(s->set.add(s));
