@@ -28,6 +28,8 @@ def solution(name):
 
     return answer
 
+solution("JEROEN")
+
 # def solution(name):
 #     answer=0
 #     check=True
