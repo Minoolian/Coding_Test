@@ -10,14 +10,15 @@ def solution(number, k):
     for i in range(len(number)-k):
         max=0
         for j in range(idx,i+k+1):
-            if max<number[j]:
+            if max<int(number[j]):
                 idx=j+1
-                max=number[j]
-
-        answer.append(max)
+                max=int(number[j])
+                if int(number[j])==9:
+                    break
+                
+        answer+=str(max)
 
     return answer
-
 # 시간초과
 # from itertools import combinations
 #
