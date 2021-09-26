@@ -13,8 +13,8 @@ def solution(numbers, target):
             if target==result:
                 answer+=1
             return
-        dfs(i+1,result+numbers[0])
-        dfs(i+1,result-numbers[0])
+        dfs(i+1,result+numbers[i])
+        dfs(i+1,result-numbers[i])
 
     dfs()
     return answer
