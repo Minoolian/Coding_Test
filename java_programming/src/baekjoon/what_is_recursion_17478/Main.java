@@ -1,4 +1,4 @@
-package baekjoon.what_is_recursion;
+package baekjoon.what_is_recursion_17478;
 
 import java.util.Scanner;
 

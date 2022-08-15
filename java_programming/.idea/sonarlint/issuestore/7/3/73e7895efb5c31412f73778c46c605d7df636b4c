@@ -1,0 +1,11 @@
+
+y
+java:S1319F"cThe type of "adj" should be an interface such as "List" rather than the implementation "ArrayList".(ö‡Ê
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßŠÉ
+f	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö‡Ê
+f	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”îë²
+ñ
+java:S1598"ÎThis file "ë°±ì¤€_1916_ìµœì†Œë¹„ìš©êµ¬í•˜ê¸°.java" should be located in "baekjoon\find_minimum_cost_1916" directory, not in "C:\Users\Administrator\Documents\00. Coding\java_programming\CoAlMot\Mino\graph".(­‰ûÿÿÿÿ8›ó³¶–0
+t
+java:S1210"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(ü”„şùÿÿÿÿ
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(æ¡œûÿÿÿÿ

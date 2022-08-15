@@ -1,0 +1,9 @@
+
+M
+java:S25891"7Remove this expression which always evaluates to "true"(áŒé­
+?
+java:S1197"*Move the array designators [] to the type.(ÔÂÓB
+9
+java:S1659("#Declare "right" on a separate line.(£ÊÇç
+S	java:S106""9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(®ıáëûÿÿÿÿ

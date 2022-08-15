@@ -1,4 +1,4 @@
-package baekjoon.chage_sequence;
+package baekjoon.chage_sequence_1551;
 
 import java.util.Arrays;
 import java.util.Scanner;
